@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Miprimera</string>
+    <string name="action_settings">Settings</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="text_login">Login</string>
+    <string name="email">Email</string>
+    <string name="nombre">Nombre</string>
+    <string name="user">Usuario</string>
+    <string name="hint_password">password</string>
+    <string name="hint_password_confirmar">confirmar contraseña</string>
+    <string name="join_us">Registrar</string>
+    <string name="hace">hace</string>
+    <string name="time_card">hace 10 dias</string>
+    <string name="like_number_card">10 me gusta</string>
+    <string name="mi_nombre">Cristhian Bonilla</string>
+
+    <style name="tab_search">Buscar</style>
+
+    <style name="tab_home">Inicio</style>
+
+
+    <style name="tab_perfil">Perfil</style>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dont_have_account">no tienes una cuenta?</string>
+    <string name="crear_una_aqui">crea una aquí</string>
+    <string name="title_activity_referencia">ReferenciaActivity</string>
+    <string name="title_image">Ingeniero de sistemas</string>
+    <string name="me_gusta">Me gusta</string>
+    <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="transitionname_picture">transitionNamePicture</string>
+</resources>
