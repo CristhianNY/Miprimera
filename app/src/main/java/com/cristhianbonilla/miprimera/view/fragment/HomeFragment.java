@@ -2,6 +2,7 @@ package com.cristhianbonilla.miprimera.view.fragment;
 
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,16 +14,27 @@ import android.view.ViewGroup;
 
 import com.cristhianbonilla.miprimera.R;
 import com.cristhianbonilla.miprimera.adapter.PictureAdapterRecyclerView;
+import com.cristhianbonilla.miprimera.adapter.PostAdapterRecyclerView;
+import com.cristhianbonilla.miprimera.api.MiPrimeraClient;
+import com.cristhianbonilla.miprimera.api.MiPrimeraFirebaseService;
+import com.cristhianbonilla.miprimera.api.PostResponse;
 import com.cristhianbonilla.miprimera.model.Picture;
+import com.cristhianbonilla.miprimera.model.Post;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
-
-
+    RecyclerView pictureRecycler;
+    LinearLayoutManager linearLayoutManager;
+    ArrayList<Post> post;
+    PostAdapterRecyclerView postAdapterRecyclerView;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -35,19 +47,60 @@ public class HomeFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
         showToolbar(getResources().getString(R.string.app_name), false,view);
-        RecyclerView pictureRecycler = (RecyclerView) view.findViewById(R.id.pictureRecycler);
+        post = new ArrayList<>();
+        populateDate();
+       pictureRecycler = (RecyclerView) view.findViewById(R.id.pictureRecycler);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager = new LinearLayoutManager(getContext());
 
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         pictureRecycler.setLayoutManager(linearLayoutManager);
-        PictureAdapterRecyclerView pictureAdapterRecyclerView =
-                new PictureAdapterRecyclerView(buidPictures(),R.layout.cardview_picture,getActivity());
+        postAdapterRecyclerView =
+                new PostAdapterRecyclerView(post,R.layout.cardview_picture,getActivity());
 
-        pictureRecycler.setAdapter(pictureAdapterRecyclerView);
+        pictureRecycler.setAdapter(postAdapterRecyclerView);
+
+        FloatingActionButton fab =  (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewPost newPost = new NewPost();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, newPost)
+                .addToBackStack(null).commit();
+            }
+        });
         return view;
 
 
+    }
+
+    private void populateDate() {
+
+        MiPrimeraFirebaseService service = (new MiPrimeraClient()).getService();
+
+        Call<PostResponse> postListCall = service.getPostList();// este es el metodo que creamos para obtener todos los metodos
+        postListCall.enqueue(new Callback<PostResponse>() {
+            @Override
+            public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
+
+                // aca obtenemos nuestros post desde firebas
+                // si nuestra respuesta es exitosa
+                if(response.isSuccessful()){
+
+                    PostResponse result = response.body();
+
+                    post.clear();
+                    post.addAll(result.getPostsList());
+                    postAdapterRecyclerView.notifyDataSetChanged();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     public ArrayList<Picture> buidPictures(){
@@ -71,7 +124,9 @@ public class HomeFragment extends Fragment {
     }
 
 
-
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        populateDate();
+    }
 }
