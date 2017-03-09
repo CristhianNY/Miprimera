@@ -45,11 +45,13 @@
             >
 
             <android.support.design.widget.TextInputLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/textoBlancoLogin">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/nombreUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/username"/>
@@ -63,6 +65,7 @@
 
                 >
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/password_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -79,6 +82,13 @@
                 android:theme="@style/boton_login"
                 android:id="@+id/boton_login"
                 android:onClick="goHome"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_login"
+                android:theme="@style/boton_login"
+                android:id="@+id/segundoBoton"
+                android:onClick="goHome2"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -103,6 +113,17 @@
                     android:textSize="@dimen/dont_have_account"
                     android:layout_toRightOf="@+id/dontHaveAccount"
                     android:onClick="goCreateAccount"/>
+                <TextView
+                    android:id="@+id/nuevo"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crear_una_aqui"
+                    android:textColor="@color/blanco"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/dont_have_account"
+                    android:layout_toRightOf="@+id/dontHaveAccount"
+                    android:onClick="abrirNuevo"/>
 
             </RelativeLayout>
         </LinearLayout>

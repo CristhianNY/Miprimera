@@ -14,7 +14,8 @@
     <string name="time_card">hace 10 dias</string>
     <string name="like_number_card">10 me gusta</string>
     <string name="mi_nombre">Cristhian Bonilla</string>
-
+    <string name="facebook_app_id">1316412021748460</string>
+    <string name="fb_login_protocol_scheme">fbAPP_ID</string>
     <style name="tab_search">Buscar</style>
 
     <style name="tab_home">Inicio</style>
@@ -32,4 +33,9 @@
     <string name="me_gusta">Me gusta</string>
     <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
     <string name="transitionname_picture">transitionNamePicture</string>
+    <string name="tomarfoto">Tomar Foto</string>
+    <string name="error_al_crear_el_archivo">Error al crear el archivo</string>
+    <string name="error_al_crear_el_archivo2">por aca</string>
+    <string name="title_activity_login_facebook">LoginFacebook</string>
+    <string name="login_email">Login con email</string>
 </resources>
